@@ -2,11 +2,16 @@ import React from 'react';
 import {View,KeyboardAvoidingView,TextInput,Text,TouchableOpacity,TouchableWithoutFeedback,Button,Keyboard,Image} from 'react-native'; 
 import {useState} from 'react';
 import loginStyle from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 function LoginScreen(props) {
+  const navigationN = useNavigation();
+
   const [correo, setCorreo] = useState(''); 
   const [contrasena, setContrasena] = useState(''); 
-  const loginPressed = {}
+  function loginPressed() {
+    navigationN.navigate("Menu");
+  }
   const registerPressed = {}
   
 
@@ -15,6 +20,7 @@ function LoginScreen(props) {
           <View style={loginStyle.inner}> 
             <View style={loginStyle.banner}> 
             <Image source={require('../Media/logoC.png')} style={{width:'50%',height:'60%', alignSelf:'center', tintColor: '#202021'}}/>
+            <Text style={{ textAlign: 'center',paddingTop:10, fontSize:40,fontWeight:'bold',color:'black' }}>CubículosTEC</Text>
             </View>
             <View style={loginStyle.buttonView}>
             <TextInput ref={this.correoBoton}
