@@ -3,22 +3,38 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./Login/LoginScreen";
 import MainScreen from "./MainMenu/MainScreen";
-
+import AdminMenu from "./AdminMenu/AdminMenu";
+import GestCubiculos from "./AdminMenu/GestCubiculos";
+ 
 const HomeStackNavigator = createNativeStackNavigator();
 
-function MyStack(){
-    return(
+function MyStack() {
+    return (
         <HomeStackNavigator.Navigator initialRouteName="Login">
-           <HomeStackNavigator.Screen
-                name = "Login"
+            <HomeStackNavigator.Screen
+                name="Login"
                 component={LoginScreen}
                 options={{
                     headerShown: false
                 }}
             />
             <HomeStackNavigator.Screen
-                name = "Menu"
+                name="Menu"
                 component={MainScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <HomeStackNavigator.Screen
+                name="AdminMenu"
+                component={AdminMenu}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <HomeStackNavigator.Screen
+                name="GestCubiculos"
+                component={GestCubiculos}
                 options={{
                     headerShown: false
                 }}
@@ -26,10 +42,10 @@ function MyStack(){
         </HomeStackNavigator.Navigator>
     )
 }
-export default function ScreenNavigator(){
+export default function ScreenNavigator() {
     return (
         <NavigationContainer>
-           <MyStack/>     
+            <MyStack />
         </NavigationContainer>
     )
 }

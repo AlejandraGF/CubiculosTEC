@@ -12,7 +12,10 @@ function LoginScreen(props) {
   function loginPressed() {
     navigationN.navigate("Menu");
   }
-  const registerPressed = {}
+  function registerPressed()  {
+    navigationN.navigate("AdminMenu");
+
+  }
   
 
     return (

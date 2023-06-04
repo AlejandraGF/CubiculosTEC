@@ -8,13 +8,54 @@ const MainScreenStyles = StyleSheet.create({
       backgroundColor:SharedStyles.colorDef,
       //paddingTop: StatusBar.currentHeight,
     },
+    buttonAcept: {
+      borderRadius: 8,
+      padding: 20,
+      alignItems: 'center',
+      backgroundColor: "blue"
+    },
+    buttonDelete: {
+      borderRadius: 8,
+      padding: 20,
+
+      alignItems: 'center',
+      backgroundColor: "red"
+    },
     banner: {
+      maxHeight:'35%',
       flex:1,
       backgroundColor: SharedStyles.colorDef,
       alignContent: 'center',
       alignItems: 'center',
       justifyContent: 'center',
   //    justifyContent: 'center',
+    },
+    cubContainer: {
+      padding: 20,
+      marginTop: 15,
+      alignSelf: "center",
+      width:'90%',
+      borderRadius: 10,
+      backgroundColor: "white",
+
+
+  //    justifyContent: 'center',
+    },
+    appHeader: {
+      maxHeight:'4%',
+      flex:1,
+      backgroundColor: SharedStyles.colorDef,
+      alignContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+  //    justifyContent: 'center',
+    },
+    pageView: {
+      backgroundColor:SharedStyles.colorBG,
+      flex:1.8,
+      width:'100%',
+      borderTopLeftRadius:20,
+      borderTopRightRadius: 20,
     },
     buttonView: {
       backgroundColor:SharedStyles.colorBG,
