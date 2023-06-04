@@ -3,6 +3,7 @@ import {View,KeyboardAvoidingView,TextInput,Text,TouchableOpacity,TouchableWitho
 import {useState} from 'react';
 import loginStyle from './styles';
 import { useNavigation } from '@react-navigation/native';
+import SharedStyles from '../Shared';
 
 function LoginScreen(props) {
   const navigationN = useNavigation();
@@ -13,7 +14,7 @@ function LoginScreen(props) {
     navigationN.navigate("Menu");
   }
   function registerPressed()  {
-    navigationN.navigate("AdminMenu");
+    navigationN.navigate("Register");
 
   }
   
@@ -42,17 +43,21 @@ function LoginScreen(props) {
               width= '90%'
               placeholderTextColor = "black"
             />
-            <TouchableOpacity onPress={loginPressed}>
-                  <View style={loginStyle.button}>
+            <View style={{paddingBottom:30, alignItems:'center'}}>
+            <TouchableOpacity  onPress={loginPressed}>
+                  <View style={[loginStyle.button,{marginBottom:0, paddingBottom:0}]}>
                     <Text style={loginStyle.buttonText}>Iniciar Sesión</Text>
                   </View>
                 </TouchableOpacity>
 
+              <View style={{width:300, marginTop:0, paddingBottom:30 , flexDirection: 'row', paddingTop:5}}>
+             
+              <Text style={[loginStyle.buttonText,{fontWeight:'normal',fontSize:18,paddingLeft:30, paddingRight:0, color:'black'}]}>¿No tienes una cuenta? </Text>
                 <TouchableOpacity onPress={registerPressed}>
-                  <View style={loginStyle.button}>
-                    <Text style={loginStyle.buttonText}>Registrarme</Text>
-                  </View>
+                    <Text style={[loginStyle.buttonText,{fontSize:20, paddingHorizontal:0, color:SharedStyles.colorDark }]}>Registrate</Text>
                 </TouchableOpacity>
+                </View>
+                </View>
             </View>
           </View>
       </KeyboardAvoidingView>
