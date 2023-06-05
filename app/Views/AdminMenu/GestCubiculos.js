@@ -11,7 +11,7 @@ function GestCubiculos(props) {
     //Mauricio S
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const url = "http://192.168.18.73:3000/cubiculos";
+    const url = "http://192.168.18.10:3000/cubiculos";
 
     useEffect(() => {
         fetch(url)
@@ -22,6 +22,9 @@ function GestCubiculos(props) {
     }, [])
 
     //
+    function navGestAsig()  {
+        navigationN.navigate("EditCubiculo");
+      }
 
 
     function botonListaApartados(e) {
@@ -63,11 +66,11 @@ function GestCubiculos(props) {
                     {
                         loading ? (<Text> Cargando... </Text>) : (
                             data.map((post) => (
-                                <View>
+                                <View key={post.idCubiculo}>
                                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{post.nombre}</Text>
                                     <Text style={{ fontSize: 20 }}>Capacidad: {post.capacidad}</Text>
                                     <View style={{ marginTop: 15, flexDirection: "row", alignSelf: "center", justifyContent: "space-between", width: "80%" }}>
-                                        <TouchableOpacity onPress={botonListaApartados(post)}>
+                                        <TouchableOpacity onPress={() => navigationN.navigate("EditCubiculo",post)}>
                                             <View style={MainScreenStyles.buttonAcept}>
                                                 <Text style={{ fontSize: 20, color: "white" }}>Editar</Text>
                                             </View>

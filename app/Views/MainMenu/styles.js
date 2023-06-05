@@ -52,8 +52,7 @@ const MainScreenStyles = StyleSheet.create({
     },
     pageView: {
       backgroundColor:SharedStyles.colorBG,
-      flex:1.8,
-      width:'100%',
+      flex:1,
       borderTopLeftRadius:20,
       borderTopRightRadius: 20,
     },
@@ -86,7 +85,18 @@ const MainScreenStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: SharedStyles.colorDark,
         opacity:1.0
-      }
+      },
+      input: {
+        height: 50,
+        width: '90%',
+        paddingLeft:15,
+        borderRadius:10,
+        backgroundColor:'white',
+        fontSize: SharedStyles.buttonsSizeFont,
+        elevation: 20,
+        shadowColor: 'grey',
+  
+      },
   })
 
   export default MainScreenStyles;
