@@ -11,7 +11,7 @@ function GestCubiculos(props) {
     //Mauricio S
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const url = "http://192.168.18.10:3000/cubiculos";
+    const url = "http://192.168.18.73:3000/cubiculos";
 
     useEffect(() => {
         fetch(url)

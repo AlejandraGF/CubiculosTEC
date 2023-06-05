@@ -6,14 +6,38 @@ import MainScreenStyles from '../MainMenu/styles';
 import SharedStyles from '../Shared';
 
 function EditCubiculo(route) {
+    const navigationN = useNavigation();
     const cub = route.route.params
     const [textNombre, setNombre] = useState(cub.nombre);
     const [textCapacidad, setCapacidad] = useState(""+cub.capacidad);
 
-    
-    console.log(route.route.params)
     const [isEnabled, setIsEnabled] = useState("Ocupado" == cub.estado ? false : true);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const pEstado = useState(isEnabled ? 1 : 0);
+    
+
+    function  realizarCambios(){
+        console.log("El estado es: "+pEstado);
+        fetch("http://192.168.18.73:3000/cubiculos/edit", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id:cub.idCubiculo,
+                capacidad:textCapacidad,
+                nombre:textNombre,
+                estado:pEstado[0]
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log(JSON.stringify(responseData));
+                navigationN.goBack()
+            })
+            
+    }
     return (
 
         <View style={MainScreenStyles.container}>
@@ -52,7 +76,7 @@ function EditCubiculo(route) {
                         value={isEnabled}
                     />
 
-                    <TouchableOpacity onPress={() => console.log()}>
+                    <TouchableOpacity onPress={realizarCambios}>
                         <View style={MainScreenStyles.buttonAcept}>
                             <Text style={{ fontSize: 20, color: "white" }}>Confirmar</Text>
                         </View>
