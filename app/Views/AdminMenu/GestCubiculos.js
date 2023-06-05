@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, SafeAreaView, Button, Alert, Platform, StatusBar, Dimensions, TouchableOpacity, DrawerLayoutAndroid, } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView, Button, Alert, Platform, StatusBar, Dimensions, TouchableOpacity, DrawerLayoutAndroid, ScrollView, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SearchBar } from '@rneui/themed';
 import MainScreenStyles from '../MainMenu/styles';
@@ -34,7 +34,38 @@ function GestCubiculos(props) {
 
     const updateSearch = (search) => {
         setSearch(search);
+        console.log("buscando"+search)
+        filter()
     };
+    const filter = () => {
+        filtrarLista(data,search);
+    };
+    function filtrarLista(lista, terminoBusqueda) {
+        // Convertir el término de búsqueda a minúsculas para una búsqueda insensible a mayúsculas
+        terminoBusqueda = terminoBusqueda.toLowerCase();
+      
+        // Filtrar la lista de objetos
+        const resultadoFiltrado = lista.filter(objeto => {
+          // Verificar si alguna de las propiedades del objeto contiene el término de búsqueda
+          for (let propiedad in objeto) {
+            if (objeto.hasOwnProperty(propiedad)) {
+              const valor = objeto[propiedad];
+      
+              // Convertir el valor de la propiedad a minúsculas para una búsqueda insensible a mayúsculas
+              const valorMinusculas = valor.toString().toLowerCase();
+      
+              // Verificar si el término de búsqueda se encuentra en el valor de la propiedad
+              if (valorMinusculas.includes(terminoBusqueda)) {
+                return true;
+              }
+            }
+          }
+      
+          return false;
+        });
+        console.log(resultadoFiltrado)
+        setData(resultadoFiltrado);
+      }
 
     return (
 
@@ -47,7 +78,7 @@ function GestCubiculos(props) {
 
             <View style={MainScreenStyles.pageView}>
 
-                <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Gestión de Cubiculos</Text>
+                <Text style={MainScreenStyles.titulo}>Gestión de Cubiculos</Text>
                 <View style={{ width: "90%", alignSelf: "center" }}>
                     <SearchBar
                         placeholderTextColor={"black"}
@@ -62,11 +93,11 @@ function GestCubiculos(props) {
                     />
                 </View>
 
-                <View style={MainScreenStyles.cubContainer}>
+                <ScrollView >
                     {
                         loading ? (<Text> Cargando... </Text>) : (
                             data.map((post) => (
-                                <View key={post.idCubiculo}>
+                                <View style={MainScreenStyles.cubContainer}  key={post.idCubiculo}>
                                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{post.nombre}</Text>
                                     <Text style={{ fontSize: 20 }}>Capacidad: {post.capacidad}</Text>
                                     <View style={{ marginTop: 15, flexDirection: "row", alignSelf: "center", justifyContent: "space-between", width: "80%" }}>
@@ -85,7 +116,7 @@ function GestCubiculos(props) {
 
                             ))
                         )}
-                </View>
+                </ScrollView>
             </View>
         </View>
     );

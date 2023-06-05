@@ -97,6 +97,23 @@ const MainScreenStyles = StyleSheet.create({
         shadowColor: 'grey',
   
       },
+      intInput: {
+        textAlign: "center",
+        height: 50,
+        width: '20%',
+        borderRadius:10,
+        backgroundColor:'white',
+        fontSize: SharedStyles.buttonsSizeFont,
+        elevation: 20,
+        shadowColor: 'grey',
+  
+      },
+      titulo: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        marginTop: 15,
+        marginLeft: 15
+      }
   })
 
   export default MainScreenStyles;

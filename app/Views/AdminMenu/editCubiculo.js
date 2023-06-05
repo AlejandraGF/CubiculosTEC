@@ -6,9 +6,11 @@ import MainScreenStyles from '../MainMenu/styles';
 import SharedStyles from '../Shared';
 
 function EditCubiculo(route) {
-    const navigationN = useNavigation();
-
     const cub = route.route.params
+    const [textNombre, setNombre] = useState(cub.nombre);
+    const [textCapacidad, setCapacidad] = useState(""+cub.capacidad);
+
+    
     console.log(route.route.params)
     const [isEnabled, setIsEnabled] = useState("Ocupado" == cub.estado ? false : true);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -23,20 +25,23 @@ function EditCubiculo(route) {
 
             <View style={MainScreenStyles.pageView}>
 
-                <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 15}}>Editar Cubiculo</Text>
+                <Text style={MainScreenStyles.titulo}>Editar Cubiculo</Text>
                 <View style={{ alignItems: 'center', justifyContent: 'space-around', }}>
 
                     <Text style={{ fontSize: 30, fontWeight: 'bold', marginBottom: 30 }}>Nombre :</Text>
                     <TextInput
+                        id="nombre"
                         style={MainScreenStyles.input}
-                        defaultValue={cub.nombre}
+                        onChangeText={newText => setNombre(newText)}
+                        value={textNombre}
                         placeholderTextColor="black"
                     />
                     <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, marginBottom: 30 }}>Capacidad :</Text>
                     <TextInput
                         keyboardType={"numeric"}
-                        style={MainScreenStyles.input}
-                        defaultValue={"" + cub.capacidad}
+                        style={MainScreenStyles.intInput}
+                        onChangeText={newText => setCapacidad(newText)}
+                        value={textCapacidad}
                         placeholderTextColor="black"
                     />
                     <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40 }}>Estado : {isEnabled? "Libre" : "Ocupado"}</Text>
@@ -47,7 +52,7 @@ function EditCubiculo(route) {
                         value={isEnabled}
                     />
 
-                    <TouchableOpacity onPress={() => navigationN.navigate("EditCubiculo", post)}>
+                    <TouchableOpacity onPress={() => console.log()}>
                         <View style={MainScreenStyles.buttonAcept}>
                             <Text style={{ fontSize: 20, color: "white" }}>Confirmar</Text>
                         </View>
