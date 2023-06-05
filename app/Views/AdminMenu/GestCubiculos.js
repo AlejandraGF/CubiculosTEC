@@ -10,13 +10,15 @@ function GestCubiculos(props) {
 
     //Mauricio S
     const [data, setData] = useState([])
+    const [lista, setLista] = useState([])
+
     const [loading, setLoading] = useState(true)
     const url = "http://192.168.18.73:3000/cubiculos";
 
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
-            .then((json) => setData(json))
+            .then((json) => {setData(json),setLista(json)})
             .catch((error) => console.error(error))
             .finally(() => setLoading(false))
     }, [])
@@ -32,39 +34,17 @@ function GestCubiculos(props) {
     }
     const [search, setSearch] = useState("");
 
-    const updateSearch = (search) => {
-        setSearch(search);
-        console.log("buscando"+search)
-        filter()
-    };
-    const filter = () => {
-        filtrarLista(data,search);
-    };
-    function filtrarLista(lista, terminoBusqueda) {
-        // Convertir el término de búsqueda a minúsculas para una búsqueda insensible a mayúsculas
-        terminoBusqueda = terminoBusqueda.toLowerCase();
-      
-        // Filtrar la lista de objetos
-        const resultadoFiltrado = lista.filter(objeto => {
-          // Verificar si alguna de las propiedades del objeto contiene el término de búsqueda
-          for (let propiedad in objeto) {
-            if (objeto.hasOwnProperty(propiedad)) {
-              const valor = objeto[propiedad];
-      
-              // Convertir el valor de la propiedad a minúsculas para una búsqueda insensible a mayúsculas
-              const valorMinusculas = valor.toString().toLowerCase();
-      
-              // Verificar si el término de búsqueda se encuentra en el valor de la propiedad
-              if (valorMinusculas.includes(terminoBusqueda)) {
-                return true;
-              }
-            }
-          }
-      
-          return false;
+    function filtrarLista(nombre) {
+        setSearch(nombre)
+        nombre = nombre.toLowerCase();
+              const cubiculosFiltrados = data.filter(cubiculo => {
+          const nombreCubiculo = cubiculo.nombre.toLowerCase();
+          return nombreCubiculo.includes(nombre);
         });
-        console.log(resultadoFiltrado)
-        setData(resultadoFiltrado);
+        setLista(cubiculosFiltrados);
+        if (nombre==""){
+            setLista(data)
+        }
       }
 
     return (
@@ -88,7 +68,7 @@ function GestCubiculos(props) {
                         containerStyle={{ borderRadius: 10, backgroundColor: "white", borderBottomColor: "white", borderTopColor: "white" }}
                         inputContainerStyle={{ backgroundColor: SharedStyles.colorBG }}
                         placeholder="Buscar..."
-                        onChangeText={updateSearch}
+                        onChangeText={newText => filtrarLista(newText)}
                         value={search}
                     />
                 </View>
@@ -96,7 +76,7 @@ function GestCubiculos(props) {
                 <ScrollView >
                     {
                         loading ? (<Text> Cargando... </Text>) : (
-                            data.map((post) => (
+                            lista.map((post) => (
                                 <View style={MainScreenStyles.cubContainer}  key={post.idCubiculo}>
                                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{post.nombre}</Text>
                                     <Text style={{ fontSize: 20 }}>Capacidad: {post.capacidad}</Text>
