@@ -10,7 +10,7 @@ function AdminMenu(props) {
     navigationN.navigate("GestCubiculos");
   }
   function navGestEst()  {
-    navigationN.navigate("AdminMenu");
+    navigationN.navigate("GestEstudiantes");
   }
   function navGestTiemp() {
     navigationN.navigate("Menu");
@@ -32,7 +32,7 @@ function AdminMenu(props) {
         <Text style={{ textAlign: 'center',paddingBottom:25, fontSize:40,fontWeight:'bold',color:'white' }}>CubículosTEC</Text>
          
         <View style={MainScreenStyles.buttonView}>
-        <TouchableOpacity onPress={navGestCub}  >
+        <TouchableOpacity onPress={navGestEst}  >
             <View style={MainScreenStyles.button}>
               <Text style={MainScreenStyles.buttonText}>Gestión de estudiantes</Text>
             </View>
