@@ -182,3 +182,94 @@ CREATE PROCEDURE bloquearCubiculo @idCubiculo int, @fechaDeUso date, @horaInicio
 AS
 EXEC dbo.agregarReservacion @idCubiculo = @idCubiculo, @idEstudiante = 1, @fechaDeUso = @fechaDeUso, @horaInicio = @horaInicio,
 @horaFinal = @horaFinal, @fechaDeReservacion = @fechaDeReservacion
+
+
+
+
+-- PREGUNTAS
+
+DROP PROCEDURE IF EXISTS dbo.leerPreguntas
+
+CREATE PROCEDURE leerPreguntas
+AS
+SELECT idPregunta, pregunta
+FROM dbo.Preguntas
+
+
+DROP PROCEDURE IF EXISTS dbo.leerPregunta
+
+CREATE PROCEDURE leerPregunta @idPregunta int
+AS
+SELECT idPregunta, pregunta
+FROM dbo.Preguntas
+WHERE idPregunta = @idPregunta
+
+
+
+
+-- RESPUESTAS
+
+DROP PROCEDURE IF EXISTS dbo.leerRespuesta
+
+CREATE PROCEDURE leerRespuesta @idRespuesta int
+AS
+SELECT idRespuesta, idPregunta, respuesta
+FROM dbo.Respuestas
+WHERE idRespuesta = @idRespuesta
+
+
+DROP PROCEDURE IF EXISTS dbo.leerRespuestasPregunta
+
+CREATE PROCEDURE leerRespuestasPregunta @idPregunta int
+AS
+SELECT idRespuesta, idPregunta, respuesta
+FROM dbo.Respuestas
+WHERE idPregunta = @idPregunta
+
+
+DROP PROCEDURE IF EXISTS dbo.agregarRespuesta
+
+CREATE PROCEDURE agregarRespuesta @idPregunta int, @respuesta nvarchar(100)
+AS
+INSERT INTO dbo.Respuestas (idPregunta, respuesta)
+VALUES (@idPregunta, @respuesta)
+
+
+DROP PROCEDURE IF EXISTS dbo.leerIdRespuesta
+
+CREATE PROCEDURE leerIdRespuesta @respuesta nvarchar(100)
+AS
+SELECT idRespuesta, idPregunta, respuesta
+FROM dbo.Respuestas
+WHERE respuesta = @respuesta
+
+
+
+-- RESPUESTAS ESTUDIANTES
+
+DROP PROCEDURE IF EXISTS dbo.leerRespuestasEstudiantes
+
+CREATE PROCEDURE leerRespuestasEstudiantes
+AS
+SELECT idRespuestaEstudiante, idEstudiante, idPregunta, idRespuesta, idReservacion
+FROM dbo.RespuestasEstudiantes
+
+
+DROP PROCEDURE IF EXISTS dbo.leerRespuestasPorCubiculo
+
+CREATE PROCEDURE leerRespuestasPorCubiculo @idCubiculo int
+AS
+SELECT idRespuestaEstudiante, RespuestasEstudiantes.idEstudiante, idPregunta, idRespuesta,
+RespuestasEstudiantes.idReservacion
+FROM dbo.RespuestasEstudiantes
+INNER JOIN dbo.Reservaciones ON Reservaciones.idReservacion = RespuestasEstudiantes.idReservacion
+WHERE Reservaciones.idCubiculo = @idCubiculo
+
+
+DROP PROCEDURE IF EXISTS dbo.agregarRespuestaEstudiante
+
+CREATE PROCEDURE agregarRespuestaEstudiante @idEstudiante int, @idPregunta int, @idRespuesta int,
+@idReservacion int
+AS
+INSERT INTO dbo.RespuestasEstudiantes (idEstudiante, idPregunta, idRespuesta, idReservacion)
+VALUES (@idEstudiante, @idPregunta, @idRespuesta, @idReservacion)
