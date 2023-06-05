@@ -5,11 +5,13 @@ const loginStyle = StyleSheet.create({
     input: {
       width: '90%',
       paddingLeft:15,
-      borderWidth:2,
       borderRadius:10,
-      borderColor: '#202021',
+      backgroundColor:'white',
       fontSize: SharedStyles.buttonsSizeFont,
-      flex : 0.17
+      flex : 0.2,
+      elevation: 20,
+      shadowColor: 'grey',
+
     },
     buttonView: {
       flex:0.5,
@@ -17,9 +19,7 @@ const loginStyle = StyleSheet.create({
       justifyContent: 'space-around',
     },
     button: {
-      //borderWidth:2,
       borderRadius:15,
-      //borderColor: SharedStyles.colorDef,
       width: 260,
       paddingEnd: 10,
       alignItems: 'center',
@@ -35,6 +35,7 @@ const loginStyle = StyleSheet.create({
   
       container: {
         flex: 1,
+        backgroundColor :SharedStyles.colorBG,
       },
       banner:{
         flex: 0.3,

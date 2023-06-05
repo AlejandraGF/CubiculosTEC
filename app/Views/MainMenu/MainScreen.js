@@ -14,6 +14,9 @@ function MainScreen(props) {
   function botonListaApartados() {
     //navigationN.navigate("T");
   }
+  function botonAdmin() {
+    navigationN.navigate("AdminMenu");
+  }
 
 
   return (
@@ -37,6 +40,12 @@ function MainScreen(props) {
           <TouchableOpacity onPress={botonListaApartados}>
             <View style={MainScreenStyles.button}>
               <Text style={MainScreenStyles.buttonText}>Lista de apartados</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={botonAdmin}>
+            <View style={MainScreenStyles.button}>
+              <Text style={MainScreenStyles.buttonText}>AdminMenu</Text>
             </View>
           </TouchableOpacity>
         </View>
