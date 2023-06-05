@@ -7,6 +7,7 @@ import AdminMenu from "./AdminMenu/AdminMenu";
 import GestCubiculos from "./AdminMenu/GestCubiculos";
 import GestEstudiantes from "./AdminMenu/GestEstudiantes";
 import RegisterScreen from "./Register/RegisterScreen";
+import EditCubiculo from "./AdminMenu/editCubiculo";
 import SharedStyles from "./Shared";
  
 const HomeStackNavigator = createNativeStackNavigator();
@@ -52,6 +53,14 @@ function MyStack() {
             <HomeStackNavigator.Screen
                 name="Register"
                 component={RegisterScreen}
+                options={{
+                    headerShown: false
+                }}
+               
+            />
+            <HomeStackNavigator.Screen
+                name="EditCubiculo"
+                component={EditCubiculo}
                 options={{
                     headerShown: false
                 }}
