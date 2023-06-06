@@ -8,11 +8,11 @@ function MainScreen(props) {
   const navigationN = useNavigation();
 
   function botonApartar() {
-   // navigationN.navigate("");
+    navigationN.navigate("ApartarCubiculo");
   }
 
   function botonListaApartados() {
-    //navigationN.navigate("T");
+    navigationN.navigate("ListaApartados");
   }
   function botonAdmin() {
     navigationN.navigate("AdminMenu");

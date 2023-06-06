@@ -21,6 +21,26 @@ const MainScreenStyles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: "red"
     },
+    buttonBack: {
+      borderRadius:35,
+      borderColor: SharedStyles.colorDark,
+      width:100,
+      height:100,
+      alignItems: 'center',
+      padding:15,
+      backgroundColor:"rgba(255,255,255,0.8)",
+      flexDirection: 'row',
+      position: 'absolute',
+      bottom:170,
+      left:10
+    },
+    buttonImageIconStyle: {
+    padding: 25,
+    margin: 5,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+  },
     banner: {
       maxHeight:'35%',
       flex:1,
@@ -66,54 +86,54 @@ const MainScreenStyles = StyleSheet.create({
       borderTopLeftRadius:50,
       borderTopRightRadius: 50,
     },
-      button: {
-        borderRadius:35,
-        borderColor: SharedStyles.colorDark,
-        width:350,
-        height:100,
-        alignItems: 'center',
-        padding:15,
-        backgroundColor:"rgba(255,255,255,0.8)",
-        flexDirection: 'row',
-        marginVertical:10
-        
-      },
-      buttonText: {
-        textAlign: 'center',
-        padding: 15,
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: SharedStyles.colorDark,
-        opacity:1.0
-      },
-      input: {
-        height: 50,
-        width: '90%',
-        paddingLeft:15,
-        borderRadius:10,
-        backgroundColor:'white',
-        fontSize: SharedStyles.buttonsSizeFont,
-        elevation: 20,
-        shadowColor: 'grey',
-  
-      },
-      intInput: {
-        textAlign: "center",
-        height: 50,
-        width: '20%',
-        borderRadius:10,
-        backgroundColor:'white',
-        fontSize: SharedStyles.buttonsSizeFont,
-        elevation: 20,
-        shadowColor: 'grey',
-  
-      },
-      titulo: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginTop: 15,
-        marginLeft: 15
-      }
+    button: {
+      borderRadius:35,
+      borderColor: SharedStyles.colorDark,
+      width:350,
+      height:100,
+      alignItems: 'center',
+      padding:15,
+      backgroundColor:"rgba(255,255,255,0.8)",
+      flexDirection: 'row',
+      marginVertical:10
+      
+    },
+    buttonText: {
+      textAlign: 'center',
+      padding: 15,
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: SharedStyles.colorDark,
+      opacity:1.0
+    },
+    input: {
+      height: 50,
+      width: '90%',
+      paddingLeft:15,
+      borderRadius:10,
+      backgroundColor:'white',
+      fontSize: SharedStyles.buttonsSizeFont,
+      elevation: 20,
+      shadowColor: 'grey',
+
+    },
+    intInput: {
+      textAlign: "center",
+      height: 50,
+      width: '20%',
+      borderRadius:10,
+      backgroundColor:'white',
+      fontSize: SharedStyles.buttonsSizeFont,
+      elevation: 20,
+      shadowColor: 'grey',
+
+    },
+    titulo: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      marginTop: 15,
+      marginLeft: 15
+    }
   })
 
   export default MainScreenStyles;

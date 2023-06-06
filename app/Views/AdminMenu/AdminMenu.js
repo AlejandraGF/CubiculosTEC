@@ -18,6 +18,9 @@ function AdminMenu(props) {
   function navGestAsig()  {
     navigationN.navigate("AdminMenu");
   }
+  function navBack()  {
+    navigationN.navigate("Menu");
+  }
 
 
   return (
@@ -30,6 +33,14 @@ function AdminMenu(props) {
           />
         </View>
         <Text style={{ textAlign: 'center',paddingBottom:25, fontSize:40,fontWeight:'bold',color:'white' }}>CubículosTEC</Text>
+
+        <TouchableOpacity onPress={navBack}  >
+            <View style={MainScreenStyles.buttonBack}>
+            <Image source={require('../../../assets/back.png')}
+              style={MainScreenStyles.buttonImageIconStyle}
+            />
+            </View>
+          </TouchableOpacity>
          
         <View style={MainScreenStyles.buttonView}>
         <TouchableOpacity onPress={navGestEst}  >
@@ -37,7 +48,7 @@ function AdminMenu(props) {
               <Text style={MainScreenStyles.buttonText}>Gestión de estudiantes</Text>
             </View>
           </TouchableOpacity>
-
+        
           <TouchableOpacity onPress={navGestCub}>
             <View style={MainScreenStyles.button}>
               <Text style={MainScreenStyles.buttonText}>Gestión de cubiculos</Text>

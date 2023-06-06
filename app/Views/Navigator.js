@@ -8,6 +8,8 @@ import GestCubiculos from "./AdminMenu/GestCubiculos";
 import GestEstudiantes from "./AdminMenu/GestEstudiantes";
 import RegisterScreen from "./Register/RegisterScreen";
 import EditCubiculo from "./AdminMenu/editCubiculo";
+import ApartarCubiculo from "./ApartarCubiculo/ApartarCubiculo"
+import ListaApartados from "./ListaApartados/ListaApartados"
 import SharedStyles from "./Shared";
  
 const HomeStackNavigator = createNativeStackNavigator();
@@ -64,6 +66,22 @@ function MyStack() {
                 options={{
                     headerShown: false
                 }}
+               
+            />
+            <HomeStackNavigator.Screen
+                name="ApartarCubiculo"
+                component={ApartarCubiculo}
+                options={{
+                    headerShown: false
+                }}
+               
+            />
+            <HomeStackNavigator.Screen
+                name="ListaApartados"
+                component={ListaApartados}
+                options={{
+                    headerShown: false
+                }}ListaApartados
                
             />
         </HomeStackNavigator.Navigator>
